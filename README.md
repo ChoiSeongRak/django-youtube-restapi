@@ -1,8 +1,55 @@
 # django-youtube-restapi
 
+## (1) Project Settings
 
 - GitHub
 
+## Model 구조 => ORM
+
+(1) User => users
+- email
+- password
+- nickname
+- is_business
+
+(2) Video => videos
+- title
+- description
+- link
+- views_count
+- thumbnail
+- video_file: link
+- User: FK
+
+ex) 파일(이미지, 동영상 )
+=> 장고에 부하가 걸림
+=> S3 Bucket(저렴, 속도가 빠름) -> 결과물: 링크
+
+(3) Reaction => reactions
+- User: FK
+- Video: FK
+- reaction (like, dislike, cancle) => 실제 youtube rest api 
+
+(4) Comment => comments
+- User: FK
+- Video: FK
+- content
+- like
+- dislike
+
+(5) Subscription => subscriptions
+- User: FK => subscriber (내가 구독한 사람)
+- User: FK => subscriber_to (나를 구독한 사람)
+
+(6) Common => common
+- created_at
+- updated_at
+
+
+
+
+
+## 참고
 - Docker란?
     애플리케이션을 컨테이너라는 격리된 환경에서 실행할 수 있도록 도와주는 오픈 소스 플랫폼이다. 컨테이너는 애플리케이션과 그 종속성을 하나의 패키지로 묶어, 다양한 환경에서 일관되게 실행할 수 있도록 한다.
 - Docker 구성요소
